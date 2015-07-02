@@ -10,4 +10,6 @@ class uiucEventbriteSpider(scrapy.Spider):
     )
 
     def parse(self, response):
-        pass
+        filename = response.url.split("/")[-2] + '.html'
+        with open(filename, 'wb') as f:
+            f.write(response.body)
